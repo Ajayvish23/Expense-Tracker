@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker</title>
+    <link rel="stylesheet" href="login2.css">
+</head>
+
+<body>
+
+<!-- Login Button -->
+    <button id="login-btn" class="btn">Login</button>
+
+<!-- Register Button -->
+    <button id="register-btn" class="btn">Register</button>
+
+
+    <!-- Popup login Modal -->
+    <div id="login-modal" class="modal">
+        <div class="modal-content">
+            <h2>Login</h2>
+            <input type="text" id="modal-username" placeholder="Enter your username">
+            <input type="password" id="modal-password" placeholder="Enter your password">
+            <button id="modal-login-btn" class="btn">Login</button>
+            <button id="close-modal-btn" class="btn close-btn">Close</button>
+        </div>
+    </div>
+
+    <!-- Popup Register Modal -->
+    <div id="register-modal" class="modal">
+        <div class="modal-content">
+            <h2>Register</h2>
+            <input type="text" id="register-username" placeholder="Enter a username">
+            <input type="password" id="register-password" placeholder="Enter a password">
+            <button id="modal-register-btn" class="btn">Register</button>
+            <button id="close-register-modal-btn" class="btn close-btn">Close</button>
+        </div>
+    </div>
+
+    <!-- Main Dashboard Content -->
+    <div id="dashboard">
+        <h2>Your Dashboard</h2>
+        <p>Here you can track your expenses and manage your transactions.</p>
+
+        <!-- Restricted content for logged-in users only -->
+        <div class="restricted" style="display: none;">
+            <h3>Transaction History</h3>
+            <ul id="transaction-list">
+                <!-- Transaction items will go here -->
+            </ul>
+        </div>
+    </div>
+
+    <script src="login2.js"></script>
+
+</body>
+
+</html>
+
+

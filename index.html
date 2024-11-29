@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Expense Tracker</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+
+    <video class="video-background" autoplay muted loop>
+        <source src="C:\Users\ajayv\OneDrive\Desktop\229739309-3d-animation-money-symbols-dif.mp4" type="video/mp4">
+    </video>
+    <div class="header">
+        <h1>Expense Tracker</h1>
+        <div class="dark-mode-toggle">
+            <i id="dark-mode-icon" class="fas fa-moon"></i>
+
+            <!-- Logout Icon -->
+            <div class="dropdown">
+                <i id="logout_icon" class="fas fa-user-alt"></i>
+                <div class="dropdown-menu" id="dropdown-menu">
+                   <a href="#" id="profile-details">Profile Details</a>
+                   <a href="#" id="logout-option">Logout</a>
+                </div>
+            </div>
+            <!-- Profile Details Modal -->
+            <div id="profile-modal" class="modal">
+                <div class="modal-content">
+                    <h2>Profile Details</h2>
+                    <p id="username-display"></p>
+                    <label for="full-name">Full Name</label>
+                    <input type="text" id="full-name" placeholder="Enter full name">
+
+                    <label for="age">Age</label>
+                    <input type="number" id="age" placeholder="Enter age">
+                    
+                    <label for="email">Email ID</label>
+                    <input type="email" id="email" placeholder="Enter email">
+
+                    <label for="mobile">Mobile Number</label>
+                    <input type="text" id="mobile" placeholder="Enter mobile number">
+
+                    <button id="save-profile-btn" class="btn">Save</button>
+                    <button id="close-profile-modal-btn" class="btn close-btn">Close</button>
+                </div>
+            </div>
+
+                 
+        </div>
+    </div>
+    <div class="container">
+        <!-- Left Section: Graphs -->
+        <div class="left-section">
+            <h3>Expense Breakdown</h3>
+            <canvas id="expenseChart"></canvas>
+        </div>
+            <!-- Separate Transaction History Section -->
+            <div class="history-container">
+                <h3>Transaction History</h3>
+                <button id="history-btn" class="btn">View History</button>
+                <div id="history-section" class="hidden">
+                    <ul id="history-list"></ul>
+                </div>
+            </div>
+
+        
+        <!-- Right Section: Inputs and Details -->
+        <div class="right-section">
+            <div class="balance">
+                <h3>Your Balance</h3>
+                <h1 id="balance">₹0.00</h1>
+            </div>
+            <div class="income-expense">
+                <div>
+                    <h3>Income</h3>
+                    <p id="income" class="money plus">+0.00</p>
+                </div>
+                <div>
+                    <h3>Expense</h3>
+                    <p id="expense" class="money minus">-0.00</p>
+                </div>
+            </div>
+
+            <h3>Add New Transaction</h3>
+            <form id="form">
+                <div class="form-control">
+                    <label for="text">Transaction Name</label>
+                    <input type="text" id="text" placeholder="Enter text...">
+                </div>
+                <div class="form-control">
+                    <label for="amount">Amount <br> (negative - expense, positive - income)</label>
+                    <input type="number" id="amount" placeholder="Enter amount...">
+                </div>
+                <div class="form-control">
+                    <label for="category">Category</label>
+                    <select id="category">
+                        <option value="general">General</option>
+                        <option value="food">Food</option>
+                        <option value="travel">Travel</option>
+                        <option value="shopping">Shopping</option>
+                    </select>
+                </div>
+                <button class="btn">Add Transaction</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
