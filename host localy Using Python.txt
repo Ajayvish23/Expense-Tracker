@@ -1,7 +1,31 @@
-Option 2: Using Python
+Hosting Using Pycharm---
 
-Navigate to your project folder in the terminal.
+1.Navigate to your project folder in the terminal.
 
-Run: python -m http.server 8000
+2.Run: python -m http.server 8000
 
-Open your browser and go to http://localhost:8000
+3.Open your browser and go to :  http://localhost:8000
+
+
+------------------------------------------------------
+
+If more than one .html file in particular folder
+
+Navigate to the specific file in your browser.
+
+For example, if you have login2.html in the folder:
+
+http://localhost:8000/login2.html
+http://localhost:8000/index.html
+
+
+-----------------------------------------------
+
+
+Run the Backend Server:
+1.Goto your backend folder in the terminal.
+   example:  cd XYZ-backend
+
+2.Start your backend by running:  node server.js
+
+Your server will listen on host you have written. Example: http://localhost:3000.
