@@ -1,0 +1,7 @@
+Option 2: Using Python
+
+Navigate to your project folder in the terminal.
+
+Run: python -m http.server 8000
+
+Open your browser and go to http://localhost:8000

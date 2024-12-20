@@ -1,3 +1,9 @@
+/* General Reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
 
 /* Ensure enough space below the header */
@@ -84,12 +90,6 @@ canvas {
     border-bottom: none;
 }
 
-/* General Reset */
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
 
 /* Body Styling */
 body {
@@ -108,8 +108,8 @@ body {
 .header {
     width: 100%;
     text-align: center;
-    background: var(--card-background, white);
-    padding: 7px 0;
+    background: linear-gradient(135deg, #007bff, #6f42c1);
+    padding: 24px ;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     position: fixed;
     top: 0;
@@ -157,15 +157,33 @@ body {
 /* History Container Styling */
 .history-container {
     flex: 1;
-    margin-right: 10px;
+    margin-right: 1px;
     padding: 20px;
-    background-color: #ffffff;
+    background-color: #f2f2f2;
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 .history-container h3 {
     margin-bottom: 10px;
+    white-space: nowrap; /* Keeps the heading on a single line */
+    font-size: 18px; /* Ensure it's not too large */
 }
+.header2 {
+    display: flex;
+    align-items: center;
+    gap: 70px; /* Minimal space between heading and dropdown */
+    margin-bottom: 15px; /* Space between header and the list */
+    flex-wrap: nowrap; /* Prevents wrapping to the next line */
+}
+
+#sorting-options {
+    padding: 2px 4px;
+    font-size: 11.5px;
+    border-radius: 2px;
+    border: 1px solid #ccc;
+    width: 120px; /* Adjusts to content */
+}
+
 #history-list {
     list-style: none;
     padding: 0;
@@ -195,6 +213,7 @@ body {
     padding: 20px;
     border-radius: 10px;*/
     text-align: center;
+    background-color: #f2f2f2;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow */
     margin-bottom: 20px; /* Space between sections */
     transition: transform 0.3s, box-shadow 0.3s;
@@ -228,10 +247,10 @@ body {
     width: 60%;
     padding: 20px;
     box-sizing: border-box;
-    background-color: #ffffff;
+    background-color: #f2f2f2;
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px; /* Space for history container */
+    margin-bottom: 1px; /* Space for history container */
 }
 
 
@@ -283,6 +302,8 @@ body.dark-mode .history-container {
     color: white;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
+
+
 
 /* Dark Mode for Buttons */
 body.dark-mode .btn {
@@ -397,3 +418,166 @@ input, select, .btn {
 .delete-btn:hover {
     background-color: #c82333;
 }
+
+/* Chart Type Dropdown Styling */
+.chart-select {
+    margin-bottom: 10px;
+    padding: 3px;
+    border-radius: 2px;
+    border: 1px solid #ccc;
+    font-size: 12px;
+}
+
+/* Chart Header Flexbox for Alignment */
+.chart-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.001px;
+}
+
+.history-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.history-header h3 {
+    margin: 0;
+}
+
+
+/* Recurring button  */
+#recurring {
+    margin-right: 5px;
+}
+
+form .form-control {
+    margin-bottom: 15px;
+}
+
+#history-section {
+    max-height: 300px; /* Adjust height as needed */
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 5px;
+}
+
+/* Style for scrollbar in history section(optional) */
+#history-section::-webkit-scrollbar {
+    width: 8px;
+}
+
+#history-section::-webkit-scrollbar-thumb {
+    background: #007bff;
+    border-radius: 5px;
+}
+
+#history-section::-webkit-scrollbar-thumb:hover {
+    background: #0056b3;
+}
+
+
+.export-section {
+    position: relative;
+    margin-top: 20px;
+    text-align: center;
+}
+
+#export-options {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: #fff;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.hidden {
+    display: none;
+}
+
+#export-options button {
+    width: 100%;
+}
+
+
+
+
+
+/* AI Suggestions Button: Open and Minimalist */
+.ai-btn {
+    background: none; /* Remove background box */
+    color: #28a745; /* Green text color */
+    border: none; /* Remove border */
+    padding: 5px; /* Adjust spacing */
+    margin-left: 10px; /* Space between Dark Mode and AI button */
+    cursor: pointer;
+    font-size: 18px; /* Slightly larger text size for better visibility */
+    text-transform: uppercase; /* Optional: Make text uppercase */
+    font-weight: bold; /* Bold text for emphasis */
+    transition: color 0.3s ease; /* Smooth color transition on hover */
+}
+/* Hover State for AI Suggestions Button */
+.ai-btn:hover {
+    color: #fafad2; /* Darker green for hover effect */
+    text-decoration: underline; /* Add underline on hover for clarity */
+}
+/* Dark Mode Styling for AI Suggestions Button */
+body.dark-mode .ai-btn {
+    color: #b3ffcc; /* Light green in dark mode */
+    background: none; /* Remove background box */
+}
+body.dark-mode .ai-btn:hover {
+    color: #8fffaa; /* Slightly brighter green for hover in dark mode */
+}
+
+
+
+.logo-image-1 {
+    height: 50px; /* Adjust size as needed */
+    margin-right: 15px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: self-start;
+    padding: 10px 20px;
+    background-color: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+
+    margin: 0;
+    padding: 0;
+
+     position: absolute; /* Ensures precise positioning */
+     top: 0; /* Aligns the image to the top */
+     left: 0; /* Aligns the image to the left */
+
+}
+
+/* Header horizontal line */
+
+
+    .top-line-00 {
+     position: absolute; /* Positions the line at the top */
+      top: 20px; /* Aligns the line at the very top */
+      left: 200px; /* Starts the line from the left edge */
+      width: calc(100% - 305px); /* Adjusts length to leave 50px from the right */
+      height: 4px; /* Thickness of the line */
+      background-color: lightgrey; /* Color of the line */
+    }
+    .top-line-000 {
+     position: absolute; /* Positions the line at the top */
+      top: 30px; /* Aligns the line at the very top */
+      left: 200px; /* Starts the line from the left edge */
+      width: calc(100% - 305px); /* Adjusts length to leave 50px from the right */
+      height: 2px; /* Thickness of the line */
+      background-color: #0056b3; /* Color of the line */
+    }

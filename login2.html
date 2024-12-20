@@ -9,13 +9,30 @@
 </head>
 
 <body>
+    <!-- logo Section -->
+    <div class="header1">
+         <div class="top-line"></div>
+         <div class="top-line-2"></div>
+         <div class="top-line-3"></div>
+         <img src="expense-logo.png" alt="Expense Tracker Logo" class="logo-image">
+    </div>
 
-<!-- Login Button -->
-    <button id="login-btn" class="btn">Login</button>
+    <!-- Header Section -->
+    <div class="header">
+        <div class="logo">Go To Dashboard</div>
+        <div class="nav-buttons">
+            <button id="login-btn">Login</button>
+            <button id="register-btn">Register</button>
+        </div>
+    </div>
 
-<!-- Register Button -->
-    <button id="register-btn" class="btn">Register</button>
-
+    <!-- Slideshow Section -->
+    <div class="slideshow">
+        <img src="expense1.jpg" alt="Expense Tracker 1">
+        <img src="expense2.jpg" alt="Expense Tracker 2">
+        <img src="expense3.jpg" alt="Expense Tracker 3">
+        <img src="expense4.jpg" alt="Expense Tracker 3">
+    </div>
 
     <!-- Popup login Modal -->
     <div id="login-modal" class="modal">
@@ -39,24 +56,6 @@
         </div>
     </div>
 
-    <!-- Main Dashboard Content -->
-    <div id="dashboard">
-        <h2>Your Dashboard</h2>
-        <p>Here you can track your expenses and manage your transactions.</p>
-
-        <!-- Restricted content for logged-in users only -->
-        <div class="restricted" style="display: none;">
-            <h3>Transaction History</h3>
-            <ul id="transaction-list">
-                <!-- Transaction items will go here -->
-            </ul>
-        </div>
-    </div>
-
     <script src="login2.js"></script>
-
 </body>
-
 </html>
-
-

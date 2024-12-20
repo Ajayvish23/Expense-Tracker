@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Suggestions</title>
+    <link rel="stylesheet" href="ai_suggestions.css">
+    <link rel="stylesheet" href="Chatbot-Functionality.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Close Button -->
+        <button id="close-btn" class="close-btn">X</button>
+        <h2>AI Suggestions for Managing Expenses</h2>
+
+        <!-- Dynamic Suggestions Section -->
+        <div class="suggestions-section" id="dynamic-suggestions">
+            <h3>Suggestions</h3>
+            <ul id="suggestion-list"></ul>
+        </div>
+
+        <!-- Spending Chart Section -->
+        <div class="chart-section">
+            <h3>Spending by Category</h3>
+            <canvas id="spendingChart" width="400" height="200"></canvas>
+        </div>
+
+        <!-- Static Suggestions Section -->
+        <div class="suggestions-section" id="static-suggestions">
+           <!--   <h3>Additional Tips</h3>-->
+            <ul id="static-suggestion-list"></ul>
+        </div>
+    </div>
+
+    <!-- Chatbot Button and Window -->
+    <div id="chatbot-container">
+        <div id="chat-window" class="hidden">
+            <div id="chat-header">
+                <h4>AI Suggestions</h4>
+                <button id="close-chat" class="close-btn-2">X</button>
+            </div>
+            <div id="chat-body">
+                <div id="chat-messages"></div>
+            </div>
+            <div id="chat-input-container">
+                <input type="text" id="chat-input" placeholder="Type your message...">
+                <button id="send-btn">Send</button>
+            </div>
+        </div>
+        <button id="chatbot-btn">💬</button>
+    </div>
+    
+    <script src="ai_suggestions.js"></script>
+    <script src="Chatbot-Functionality.js"></script>
+
+</body>
+</html>

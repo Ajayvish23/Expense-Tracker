@@ -1,4 +1,5 @@
 
+
 const balance = document.getElementById('balance');
 const income = document.getElementById('income');
 const expense = document.getElementById('expense');
@@ -131,6 +132,7 @@ form.addEventListener('submit', (e) => {
     e.preventDefault();
     const textValue = text.value.trim();
     const amountValue = amount.value.trim();
+    const isRecurring = document.getElementById('recurring').checked;
 
     if (textValue === '' || amountValue === '') {
         alert('Please provide transaction details');
@@ -142,6 +144,9 @@ form.addEventListener('submit', (e) => {
         text: textValue,
         amount: +amountValue,
         category: category.value,
+        recurring: isRecurring,
+        date: new Date().toISOString(), // Add the current date
+        nextDueDate: isRecurring ? getNextDueDate() : null, // Set next due date for recurring transactions
     };
 
 
@@ -156,7 +161,45 @@ form.addEventListener('submit', (e) => {
     // Clear form inputs
     text.value = '';
     amount.value = '';
+    document.getElementById('recurring').checked = false;
+
 });
+
+// Function to calculate the next due date (30 days from now)
+function getNextDueDate() {
+    const now = new Date();
+    now.setDate(now.getDate() + 30); // Add 30 days
+    return now.toISOString(); // Store as ISO string
+}
+
+// Load transactions and check for due recurring transactions
+document.addEventListener('DOMContentLoaded', () => {
+    loadTransactions();
+    checkRecurringTransactions();
+});
+
+function checkRecurringTransactions() {
+    const now = new Date().toISOString();
+    transactions.forEach(transaction => {
+        if (transaction.recurring && transaction.nextDueDate && transaction.nextDueDate <= now) {
+            addRecurringTransaction(transaction);
+        }
+    });
+}
+
+function addRecurringTransaction(transaction) {
+    const newTransaction = {
+        ...transaction,
+        id: Date.now(),
+        nextDueDate: getNextDueDate(), // Update the next due date
+    };
+    transactions.push(newTransaction);
+    updateBalance();
+    updateChart();
+    updateHistoryList();
+    saveTransactions();
+}
+
 
 //save transaction to local storage
 function saveTransactions() {
@@ -222,42 +265,35 @@ function updateBalance() {
 
 
 // Initialize Chart
-let chart;
-function updateChart() {
-    const categories = [...new Set(transactions.map(t => t.category))];
-    const categoryData = categories.map(cat => {
-        return transactions.filter(t => t.category === cat).reduce((acc, curr) => acc + curr.amount, 0);
-    });
-
-    // Destroy previous chart instance if it exists
-    if (chart) chart.destroy();
-
-    // Adjust chart size dynamically
-    const chartContainer = document.querySelector('.left-section');
-    const chartElement = document.getElementById('expenseChart');
-    chartElement.height = chartContainer.offsetHeight;
-
-    //Create new chart instance
-    chart = new Chart(expenseChartCtx, {
-        type: 'pie',
-        data: {
-            labels: categories,
-            datasets: [{
-                data: categoryData,
-                backgroundColor: ['#007bff', '#28a745', '#ffc107', '#dc3545'],
-            }],
-        },
-         options: {
-             responsive: true,
-             maintainAspectRatio: false, // Allow chart to resize dynamically
-         }
-    });
-}
 
 
 
 // Check if user is logged in on page load
 document.addEventListener('DOMContentLoaded', () => {
+    import('./aiSuggestions.js')
+        .then(({ generateAISuggestions }) => {
+            // Add AI Suggestions Button
+            const suggestionsButton = document.createElement('button');
+            suggestionsButton.innerText = 'Get AI Suggestions';
+            suggestionsButton.classList.add('btn');
+            document.body.appendChild(suggestionsButton);
+
+            suggestionsButton.addEventListener('click', () => {
+                const aiSuggestions = generateAISuggestions(transactions);
+                console.log(aiSuggestions);
+
+                // Display AI Suggestions in the UI
+                alert(`
+                    Spending Insights: ${JSON.stringify(aiSuggestions.insights)}
+                    Budget Recommendations: ${JSON.stringify(aiSuggestions.budget)}
+                    Expense Forecast: ${JSON.stringify(aiSuggestions.forecast)}
+                    Saving Tips: ${aiSuggestions.savingTips.join('\n')}
+                `);
+            });
+        })
+        .catch((error) => {
+            console.error('Failed to load AI Suggestions module:', error);
+        });
     const loggedInUser = localStorage.getItem('loggedInUser');
 
         loadTransactions(); // Load transactions from Local Storage
@@ -313,3 +349,13 @@ function deleteTransaction(id) {
     updateChart(); // Update the chart
     updateHistoryList(); // Refresh the history list
 }
+
+
+
+document.getElementById('ai-suggestions-btn').addEventListener('click', () => {
+    window.open('ai_suggestions.html', 'AI Suggestions', 'width=600,height=400');
+});
+
+
+
+
