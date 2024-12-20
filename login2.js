@@ -87,7 +87,7 @@ function login(event) {
         alert('Login successful!');
         localStorage.setItem('loggedInUser', username);
         // Redirect only after successful login
-        window.location.href = 'index.html';
+        window.location.href = 'index2.html';
     } else {
         alert('Invalid username or password!');
     }
